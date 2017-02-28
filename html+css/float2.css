@@ -1,0 +1,41 @@
+@CHARSET "UTF-8";
+.div1{
+	width:150px;
+	height:100px;
+	border: 1px solid red;
+	background-color:pink;
+	margin-top:5px;
+	float:left;/*左浮动：是指让该元素尽量向左移动，直到碰到
+	他的父元素的左边界*/
+	
+}
+
+.div1_special
+{
+	height:120px;
+}
+
+.div3{
+	width:600px;
+	height:600px;
+	border: 1px solid red;
+	
+}
+
+/*浮动
+ 浮动是一个重要的概念：分为左浮动 右浮动 清除浮动
+ 
+ 浮动必要性
+ 因为div默认纵向排列，如果希望div1向右面显示，用到右浮动
+ float：right;
+ 
+ 如果我们希望所有元素横向排列，则使用到左浮动
+ float:left;
+ 
+ 特别注意：如果一行宽度不够排下所有的div，会自动换行
+ 当然，如果某个div过大，则会卡住别的div1
+ 
+ 
+ 
+ 
+ * */

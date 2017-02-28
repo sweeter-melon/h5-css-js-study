@@ -1,0 +1,65 @@
+@CHARSET "UTF-8";
+.s1{
+	
+	background-color:gray;
+	width:100px;
+	height:60px;
+	float:left;
+	margin-left:10px;
+	
+}
+
+#special{
+	/*
+	position:relative; 使用相对定位,参照点为原来的位置
+	left:40px;在原来位置向右移动大小(向左移动则值为负)
+	right:-40px;
+	top:100px; 在原来位置向下移动大小
+	bottom:-100px;
+	*/
+	position: absolute;
+	left:40px;
+	top:150px;
+	/*绝对定位，参照点为离自己最近的外部非标准流盒子*/
+	
+}
+
+.s2{
+	
+	
+	
+	width:300px;
+	height:100px;
+	background-color:green;
+     float:left;
+     position:relative;
+     left:200px;
+     top:100px;
+}
+.s3{
+	position:fixed;
+	background-color: red;
+	width: 20px;
+	height:20px;
+	left:150px;
+	top:250px;
+	/*参照点就是body*/
+}
+/*css的定位有以下几种
+ * 1.static定位
+ * 这个是默认的方式
+ * 直接用left和top不生效
+ * 
+ * 2.relative定位
+ * 相对原来的位置进行定位,不让出原来的位置，其他元素不能补充
+ * 
+ * 3.绝对定位
+ * 参照点为离自己最近的外部非标准流盒子
+ * 元素从原来位置脱离，让出自己的空间，让后来元素补充
+ * 
+ * 4.fixed定位
+ * 
+ * 参照点就是body
+ */
+
+

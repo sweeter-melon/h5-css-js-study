@@ -1,0 +1,120 @@
+@CHARSET "UTF-8";
+/*类选择器*/
+.style1{
+	
+	font-weight: bold;
+	font-size:20px;
+ background-color: yellow
+	
+}
+/*执行顺序按照css里面调用位置*/
+.style4{
+	font-style:italic;
+	text-decoration:underline;
+	
+}
+/*id选择器*/
+#style2{
+	
+	font-weight: bold;
+	font-size:30px;
+	
+	
+	
+}
+#special-new{
+	
+	font-style: italic;
+	font-size: 20px;
+	color: red;
+}
+/*父子选择器*/
+/*注意子选择标签是html可以是别的*/
+/*类选择器也可以构成父子选择器*/
+#style2 span span{
+	font-style: italic;
+	font-size: 50px;
+	
+}
+
+
+/*html选择器*/
+body{
+	
+	background-color: pink;
+}
+
+a:link{
+	color: black;
+	text-decoration: none; /*无下滑线*/
+	
+}
+a:hover{
+	text-decoration: underline;
+	
+}
+a:visited{
+	color: red;
+	
+	
+}
+
+/*如果多个类/id选择器有相同的部分，可以整合在一起*/
+/*可以简化css文件*/
+.style1 .style4 #special-new{
+	
+	font-size: 35px;
+	font-family:"Arial Narrow";
+}
+
+/*一个元素最多一个id选择器，可以有多个类选择器*/
+
+
+/*使用通配符选择器,对外边距和内边距清零*/
+*{
+	
+	/*margin: 0px;*/
+       /*margin-top:10px;
+       margin-left: 10px;
+       margin-right: 0px;
+       margin-bottom: 0px;*/
+      margin:10px 0px 0px 10px; /*代表上 右 下 左  逆时针*/
+     /*margin: 10px 0px 10px  三个值代表（上 下） 左  右*/
+	 
+	padding: 0px;/*padding 内边距规范和margin一样*/
+	
+	
+}
+
+
+/* 
+ * 类选择器的基本语法
+ 
+ * .类选择器名{
+ * 属性：属性值
+ * 属性：	属性值
+ * 
+ * 
+ * }
+ * 
+ * id选择器
+ * 
+ * 基本语法
+ * #id选择器名
+ * {
+ * 属性：属性值	
+ * }
+ * 在html文件中要引用id选择器，则要用id=“选择器名”
+ * 
+ * 
+ * 当一个元素同时被id，html，类选择器修饰时，优先级是
+ * 
+ * id>类>html
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * */

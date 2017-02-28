@@ -1,0 +1,77 @@
+ js的内部类
+ 
+ javascript 中本身有提供一些可以直接使用的类，这种类就是内部类，主要有：
+ Object/Array/Boolean/String/Data/Number
+ 
+ 
+ <>内部类分类
+ 从使用方式看，分为静态类和动态类
+ 
+ 静态类：使用   类名.属性/方法
+ 
+ 动态类： 使用 var 对象=new 动态类（）;
+ 
+ //math 静态类
+window.alert(Math.abs(-12));
+
+//data
+//显示当前日期
+var nowdata=new Date();
+window.alert(nowdata.toLocaleString());
+
+date类的用法
+function showhello(data)
+{
+	
+var hour=data.getHours();
+var minute=data.getMinutes();
+var second=data.getSeconds();
+if(hour>=6&&hour<=9)
+	{
+	window.alert("早上好");
+	}
+
+if(hour>=9&&hour<=12)
+{
+window.alert("中午好");
+}
+
+if(hour>12&&hour<16)
+{
+window.alert("下午好");
+}
+
+}
+
+
+string 类的用法
+
+String 是一个常用的动态类
+
+
+<>Array类
+Array类是动态类，看看常用方法：
+
+var myarr=new Array();
+/*
+myarr[0]=15;
+myarr[1]="sd";
+window.alert(myarr.length+" "+myarr);
+myarr.pop();
+window.alert(myarr.length+" "+myarr);
+myarr.push("abcd");
+window.alert(myarr.length+" "+myarr);
+*/
+
+myarr.push(1);  //arr[0]
+myarr.push("da"); //arr[1]
+myarr[0]=null; //数组长度不变
+window.alert(myarr.length+" "+myarr);
+
+
+<>  Boolean类
+boolean类是一个把布尔值打包的对象，实际用处不大
+用valueof返回值
+
+var b=new Boolean(false);
+window.alert(b.valueof);  //false

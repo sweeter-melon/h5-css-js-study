@@ -1,0 +1,64 @@
+@CHARSET "UTF-8";
+body{
+	margin:0 auto;
+	width: 1000px;
+	height:1000px;
+	
+	
+}
+
+.div1{
+	width:350px;
+	height:370px;
+	border:1px solid gray;
+	
+}
+
+.span1{
+	
+	/*background-color:pink;*/
+	display: block;
+	
+}
+.span1 a{
+	margin-left:180px;
+}
+
+.faceul{
+	
+	width:350px;
+	height:300px;
+	/*background-color:#0000FF;*/
+	list-style-type:none;
+	padding:0px;
+}
+
+.faceul li{
+	
+	float:left;
+	width:107px;
+	height: 80px;
+	
+	margin-left:6px;
+	text-align: center; /*表示放在该元素的其他元素居中*/
+	font-size: 12px;
+}
+
+.faceul img{
+	margin-top:2px;
+	width:45px;
+}
+
+
+/*定义几个常见的字体样式*/
+.font1{
+	font-weight:bold;
+	font_size:20px;
+	
+}
+/*定义几种超链接的样式*/
+a:link{
+	
+	text-decoration: none;
+	font-size: 13px;
+}

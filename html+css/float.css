@@ -1,0 +1,23 @@
+@CHARSET "UTF-8";
+.div1{
+	width:150px;
+	height:100px;
+	border: 1px solid red;
+	background-color:pink;
+	margin-top:5px;
+
+}
+
+#div2{
+	
+	float:right;右浮动：是指让该元素尽量向右移动，直到碰到
+	他的父元素的右边界*/
+		clear:both;
+}
+
+.div3{
+	width:600px;
+	height:600px;
+	border: 1px solid red;
+	
+}

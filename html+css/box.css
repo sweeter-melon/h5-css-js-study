@@ -1,0 +1,30 @@
+@CHARSET "UTF-8";
+body{
+	border:1px solid red; /*宽度 样式 颜色*/
+	width:400px;
+	height:500px;
+	margin: 0 auto;/*0表示上下为零  左右居中 */
+	
+	
+	
+	
+}
+
+.s1{
+	width: 50px;
+	height: 52px;
+	border:#0000FF 1px solid;
+	margin-top:10px;
+	margin-left:10px;
+	border-top: 1px dotted red;
+	/*建议都用margin
+	padding-top: 5px; 
+	padding-left:5px;
+	*/
+}
+.s1 img{
+	width:40px;
+	margin-top: 5px;
+	margin-left: 5px;
+	/*或者用padding实现*/
+	}

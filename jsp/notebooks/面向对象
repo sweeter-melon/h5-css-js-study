@@ -1,0 +1,499 @@
+           js面向对象编程
+  1.澄清概念
+  
+  js中基于对象=js 面向对象
+  
+  js中类没有名字，但是它取了一个新的名字，叫做原型对象   
+  
+    为什么需要对象        
+    
+    //这里就是一个cat类
+
+function Cat()
+{
+	
+
+}
+
+//如果你这样用
+//Cat(); //函数
+
+var cat1=new Cat();//类
+
+//cat1就是一个对象实例
+cat1.name="小白";
+cat1.age=3;
+cat1.color="白色";
+
+如何定义类和对象
+
+1.工厂方法-使用new Object来构建并添加相关属性
+2.使用构造函数来创建
+3.使用prototype
+4.构造函数及原型混合方式
+5.动态原型方式
+
+目前我们先进使用构造函数定义类，然后创建对象实例
+
+基本语法
+
+function 类名（）
+{
+}
+
+创建对象
+
+var 对象名=new 类名（）；
+
+
+现在对对象我们特别说明
+1.js中一切都是对象
+function Person(){}
+
+var a=new Person();
+
+window.alert(a.constructor); //a 对象实例的构造函数
+window.alert(typeof a); // a的类型
+
+var b=123;
+window.alert(b.constructor);
+window.alert(typeof b);
+
+//如何判断一个对象实例是不是Person类型
+
+if(a instanceof Person)
+	{
+	window.alert("a是Person");
+	}
+
+if(a.constructor==Person)
+	{
+	window.alert("a是Person");
+	}
+	
+	
+	补充说明
+	
+	var abc=89; //全局变量
+
+function test()
+{
+//var abc=900;	结果还是89
+	//在函数里面，如果你不带var，则表示使用的全局abc变量
+	//如果你带上var，则表示在test()中，定义一个新的abc变量
+	abc=900; //结果变成900
+}
+test();
+
+window.alert(abc);
+
+
+对象实例名如何访问
+1.对象名.属性名；
+2.对象名["属性名"]
+
+
+对象引用问题的说明
+
+function Person()
+{
+	}
+
+var a=new Person();
+a.age=3;
+a.name="huahua";
+
+var b=a;
+b.name="hong";
+window.alert(b.age+b.name+a.name);
+b=null;
+window.alert(a.age+a.name);
+window.alert(b.age); //无效，运行不出来
+
+a=null; 
+//delete a; 删除a对象；
+ /*
+  * 释放内存
+  * a=null;
+  * b=null;
+  */
+   
+   js还提供一种方式主动释放内存
+   
+   delete a; //删除a对象;
+   
+   delete a.name; //删除对象a的这个属性
+   
+   
+   
+   
+   在实际编程中，我们可能有这样的需求，当创建一个对象后，就希望
+   就希望该对象自动拥有某些属性
+   
+   使用this解决：
+   
+   function Person()
+   {
+   this.name="abc";
+   this.age=90;
+   }
+   
+   var p1=new Person();
+     var p2=new Person();
+   
+   window.alert(p1.name+" "+p2.name);
+   
+   
+  1. 哪个对象实例调用this所在的函数，那么this就代表 个对象实例
+  2.this不能在类定义的外部使用，只能在类定义的方法中使用
+  3.this不能放在类的外部使用，否则调用就变成了window 
+   
+   
+   注意事项：
+   this 不能放在类的外部使用，否则调用就变成了window
+   
+   
+   对象--成员函数（方法）
+   比如：我们希望对象不但有属性，还希望他有行为.(行为在程序中由函数体现)
+   
+   
+   
+   给对象添加方法还有两种方式：
+   1.对象名.属性名=函数名；
+   调用
+   对象名.属性名();
+   
+   2.对象名.属性名=function 函数名（）
+   {
+   代码
+   }
+         调用： 对象名.属性名();
+         
+         
+         第3种方法：
+         前面几种方法有一个问题：那就是每个对象独占函数代码，这样如果
+ 代码很多，会影响js效率，这里又提供一个方法，prototype
+         function Dog()
+{
+	}
+//使用prototype去绑定一个函数给shout
+Dog.prototype.shout=function()
+{
+window.alert("dog");	
+}
+
+var dog1=new Dog();
+var dog2=new Dog();
+dog1.shout();
+dog2.shout(); //这里ok
+window.alert(dog1.shout==dog2.shout); //输出true
+         
+         补讲==号的说明
+         1.当=两边都是字符串时，则比较内容是否相等。
+         2.如果==两边是数字，则数字大小是否相等
+         3.如果=是对象或者是对象函数，则比较地址是否相等
+        
+        
+        
+        //加深类和对象的认识
+        
+        如何给类添加方法（如何给某类型的所有对象添加方法）
+        var p1=new Object();
+p1.name="sp";
+window.alert(p1.constructor);
+*/
+/*
+var i1=new Number(10);
+window.alert(i1.constructor);
+
+var i2=10;
+window.alert(i2.constructor);
+//给类添加方法
+Number.prototype.add=function(a)
+{
+return this+a;
+}
+
+window.alert(i1.add(30).add(40));
+var b=40;
+window.alert(b.add(50));
+*/
+//体验一下Array //表示数组
+
+var arr1=new Array(3);
+arr1[0]="Geo";
+arr1[1]="john";
+arr1[2]="tohmas";
+
+//遍历该数组
+
+for(var i=0;i<arr1.length;i++)
+	{
+	document.write(arr1[i]+" ");
+	
+	}
+
+//使用Array提供的方法颠倒数据
+arr1.reverse();
+
+for(var i=0;i<arr1.length;i++)
+{
+document.write(arr1[i]+" ");
+
+}
+
+//现在我们一起看看如何给Array对象添加一个方法find(val);
+
+Array.prototype.find=function(val)
+{
+//遍历数组this
+	for(var i=0;i<this.length;i++)
+		{
+		if(val==this[i])
+			{
+			return i;
+			}
+		}
+	
+}
+document.write(arr1.find("Geo"));
+        
+        
+       <> 闭包
+         这个知识点，讲封装的时候再讲
+         
+   <>成员函数的细节
+   1.成员函数的参数可以是多个
+   2.成员函数可以返回值，也可以没有，但是有的话，最多一个
+   
+   3.js不支持函数重载
+   function test(a)
+{
+	window.alert("hello");
+	}
+function test(a)
+{
+	window.alert(a);
+	}
+
+function test(a,b)
+{
+	window.alert(a+" "+b);
+	}
+test(23);
+
+window.test(3,"hello");
+
+结论：js在调用一个函数时，时根据函数名来调用，如果有多个函数名相同，则认
+最后那个函数
+
+4.js中函数参数可变
+function abc(a,b)
+{
+return a+b;	
+}
+
+function abc(a,b,c)
+{
+return a+b+c;	
+}
+window.alert(abc(1,2));
+window.alert(abc(1,2,3));
+
+//对象编程实例
+       
+       
+   <>游戏的分析
+   
+   
+   
+   
+   
+   
+   <>构造函数
+  1. 基本函数
+    function 类名（参数名）   
+    {
+    属性=参数名
+    }
+    function Person(name,age)
+{
+	this.name=name;
+	this.age=age;
+
+}
+
+//创建Person对象的时候，就可以直接给名字和年龄
+
+var p1=new Person("huahua",12);
+window.alert(p1.name);
+var p2=new Person("hello",50);
+window.alert(p2.age);
+
+
+    <>在给一个对象初始化属性值时，也可以指定函数属性
+    案例：function jisuan(num1,num2,oper)
+{
+if(oper=="+")
+{
+return num1+num2;
+}
+if(oper=="-")
+{
+return num1-num2;
+}
+if(oper=="*")
+{
+return num1*num2;
+}
+if(oper=="/")
+{
+return num1/num2;
+}
+}
+
+function Person(name,age,fun)
+{
+this.name=name;
+this,age=age;
+this.myfun=fun;
+
+}
+
+var p1=new Person("aa",9,jisuan);
+
+window.alert(p1.name);
+window.alert(p1.myfun(89,90,"+"));
+
+<>创建对象的又一种方式
+如果对象比较简单，可以直接创建
+
+var dog={name:"小明"，age：12}
+
+扩展：
+var dog={name:"huahua",age:12,
+		fun1:function(){window.alert("hello world")},
+		fun2:function(){window.alert("ok")}
+};
+window.alert(dog.name+dog.age);
+window.alert(dog.constructor);
+dog.fun1();
+dog.fun2();
+        
+        
+有时，我会看到这样一种调用方法
+函数名.call(对象实例)；
+//这样调用，该函数的this指针就代表该对象实例
+
+
+js面向对象编程三大特征
+
+1.封装
+
+js提供以下几种控制方法和属性的访问权限
+（1）公开级
+（2）私有级
+
+
+我们前面学习过，通过prototype给所有对象添加方法，但是这种方式，不能去
+访问类的私有变量和方法
+
+2.继承
+（1）为什么需要继承
+问题：
+function Stu(name,age)
+{
+	this.name=name;
+	this.age=age;
+	this.show=function()
+	{
+	window.alert(this.name+" "+this.age);	
+	}
+}
+
+function Midstu(name,age)
+{
+   this.stu=Stu;
+   this.stu(name,age); //js中实际上是通过对对象的冒充来实现继承
+}
+
+function Pupil(name,age)
+{
+   this.stu=Stu;
+   this.stu(name,age); //js中实际上是通过对对象的冒充来实现继承
+}
+
+var midstu=new Midstu("shunping",20);
+midstu.show();
+window.alert(midstu.name);
+
+通过继承的方式解决代码冗余的问题
+
+特别说明，通过对对象冒充，js可以实现多重继承的效果
+
+<>js的重载和重写
+
+重载：js中不支持重载（即不可以通过参数的个数决定调用哪个函数），
+但是js本身支持可变参数，所以，可以看成天然支持重载
+
+重写：子类可以重写父类的某个方法，来覆盖父类的方法
+
+
+3.多态
+
+就是不同的类，有相同的方法
+function Dog()
+{
+this.test=function()
+{
+window.alert("dog");	
+}
+}
+
+function Cat()
+{
+this.test=function()
+{
+window.alert("cat");	
+}
+}
+
+function Tiger()
+{
+this.test=function()
+{
+window.alert("tiger");	
+}
+}
+var dog=new Dog();
+var cat=new Cat();
+var tiger=new Tiger();
+
+dog.test();
+cat.test();
+tiger.test();
+
+
+<>补充讲解闭包：
+
+解释：
+（1）闭包和gc(jsp垃圾回收机制)是相关联的
+（2）闭包实际上是涉及到对象的一个属性，何时被gc处理的问题
+（3）怎样才能对对象的属性形成一个闭包
+
+function A()
+ {
+	 var i=0;
+	 function B()
+	 {
+		 window.alert(i++);
+	 }
+	 return B;
+ }
+ 
+ var c=A();  //把返回值B赋给c
+ 这种用法，GC不会把i当成垃圾
+ 
+ c(); //输出0
+ c();//输出1
+        

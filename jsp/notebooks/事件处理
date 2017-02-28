@@ -1,0 +1,29 @@
+<>js的事件处理机制
+
+（1）入门案例
+案例 1 监听到鼠标点击事件，并能够显示鼠标点击的x y;
+
+
+<>js怎么访问外部定义的css
+function test5(e) {
+		
+		//如何获取css中的元素
+		var ocssRules=document.styleSheets[0].rules; //这里是固定用法
+		//从ocssRules中提取你希望的class
+		var style1=ocssRules[1];  
+		//这里的0表示action.css中的第一个规则
+		//1表示action.css中的第二个规则
+		if(e.value=="黑色")
+			{
+			style1.style.backgroundColor="black";
+			}
+		if(e.value=="红色")
+		{
+		style1.style.backgroundColor="red";
+		}
+	
+	
+	<>window有三个事件
+	onload:页面打开
+	onbefoerunload：关闭页面前
+	onunload：关闭页面

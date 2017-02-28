@@ -1,0 +1,56 @@
+@CHARSET "UTF-8";
+.s1{
+	
+	font-size:50px;
+	color:blue;
+}
+
+.s2{
+	
+	background-color:gray;
+	font-style:italic;
+	color:red;
+	font-weight: bold;
+	
+}
+.s3{
+	
+	background-color: gray;
+	font-weight:bold;
+}
+
+.s4{
+	
+	font-style:italic;
+	text-decoration: underline;
+}
+
+/*html选择器*/
+a:link
+{
+	color:red;
+	font-size: 24px;
+	font-style:italic;
+	font-family:华文新魏;
+	text-decoration: none;
+	
+}
+
+a:hover{
+	
+	color:green;
+	font-family:宋体;
+	font-size:40px;
+	font-style:italic;
+	text-decoration: underline;
+}
+
+a:visited{
+	color:gray;
+}
+
+
+
+
+
+

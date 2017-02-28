@@ -1,0 +1,64 @@
+@CHARSET "UTF-8";
+body{
+	font-size:12px;
+}
+
+.div1{
+	
+	width: 126px;
+	height:156px;
+
+
+	
+}
+
+.navi{
+	width:21px;
+	height:156px;
+    background-color:silver;
+	float: left;
+  
+	
+}
+.navi ul{
+	padding:0px;
+	margin-left:0px;
+	float:left;
+
+}
+.navi li{
+	
+	list-style-type:none;
+	float:left;
+	width:21px;
+	height:31px;
+	margin-top:2px;
+ 
+    padding-top:8px;
+    text-align: center;
+
+}
+
+.zs ,.rz{
+	width: 100px;
+	height:156px;
+
+	float:left;
+	margin-left:4px;
+
+}
+
+.zs ul ,.rz ul{
+	
+	padding:0px;
+	margin-left:0px;
+	float:left;
+	width:101px;
+
+}
+
+.zs ul li,.rz ul li{
+	
+	list-style-type: none;
+	line-height: 18px; /*行高*/
+}

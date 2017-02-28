@@ -1,0 +1,548 @@
+
+
+
+从dom编程的角度，就会把html当成dom树
+
+
+
+<>bom
+bom<browser object model> 浏览器对象模型
+
+因为做浏览器的厂家很多,w3c定义一个做浏览器的规范  规定：
+
+bom为纲,dom为目的,我们可以简单的理解dom就是bom的具体实现
+
+
+<>window对象(属于html dom 对象)
+1.confirm
+function test() {
+	var res=window.confirm("你要删除");
+	if(res)
+		{
+		window.alert("删除");
+		}
+	else
+		{
+		window.alert("放弃删除");
+		}
+}
+
+
+2.setInterval()
+该函数可以根据指定的时间，循环的执行某个函数，或者表达式需求，
+没隔 1s弹出hello。world
+
+
+
+var n=1;
+//让静态图片动
+function runchild() {
+	//得到img对象
+	var myimg=document.getElementById("myimg");
+	myimg.src=((n++%8)+1)+".jpg";
+}
+//这里需要准备几张相对图片
+
+//setInterval("showtime()", 1000);
+setInterval("runchild()", 20);
+//扩展要求  小人走10步停止
+
+3.claerInteval
+
+
+function runchild() {
+	count++;
+	if(count==11)
+		{
+		//停止定时器
+		clearInterval(myTimer);
+		count=0;
+		Refun();
+	
+		}
+	
+	//得到img对象
+	var myimg=document.getElementById("myimg");
+	myimg.src=((n++%8)+1)+".jpg";
+}
+
+4.setTimeout
+
+在指定的毫秒数后调用函数或计算表达式(但是只调用一次);
+
+需求  打开页面后 过5秒再调用 进行显示
+
+5.clearTimeout
+
+function test1()
+{
+	window.alert("abc");
+	}
+ var mytimer=setTimeout("test1()", 3000);
+ //取消timeout
+ clearTimeout(mytimer);
+ 
+ 6.moveto() moveby()
+ 
+ 	window.moveTo(100, 100); 这个是相当屏幕的左上角
+ 	window.moveBy(100,100);  当前这个窗口的左上角
+ 	
+ 7.resizeTo()  resizeBy()
+ 
+ resizeTo(100,100);// 当前窗口调整到100,100
+ resizeBy(100,100) //当前窗口增加100,100;
+ 
+ 8.opener
+ 
+ 父窗口和子窗口进行通信
+ 
+ 9.window.status 
+ 状态栏
+ 
+ 
+ <>history对象（属于javascript对象）
+ 
+ 作用：该对象包含客户端访问过的url信息
+ 代码：
+ history.back(); //返回上一页面
+ history.length  //统计浏览的次数
+ 
+ 
+ 
+ <>location对象
+ 该对象表示浏览器的location位置
+  location.reload(); //重新刷新页面
+     //window.alert(location.href);  
+    // window.alert("ok");
+     window.alert(location.hostname);  //主机
+     //window.alert(location.protocol); //协议
+ 
+ <>screen对象
+ 
+ document.write(screen.width+" "+screen.height);
+ 
+ <>event对象
+ 
+ 关于绑定事件的细节
+ 
+ （1）直接和某个html控件绑定 比如：
+ <input type="text" value="刷新页面" onclick="test()">
+ 
+ （2）通过getElementById()获取元素后，再绑定监听
+ 
+ <script type="text/javascript" language="javascript">
+function test() {
+	//document.write("hello");
+	window.alert("hello");
+}
+
+</script>
+</head>
+<body>
+<input type="text" value="刷新页面" id="but1">
+</body>
+<script type="text/javascript" language="javascript">
+
+document.getElementById("but1").onclick=test;
+</script>
+
+(3)如果我们有一个投票系统，但是只能投一次票
+function test() {
+	//document.write("hello");
+	window.alert("你投了一次票");
+	//解除这个事件绑定
+	//document.getElementById("but1").detachEvent("onclick",test);
+}
+
+</script>
+</head>
+<body>
+<input type="button" value="投票" id="but1">
+</body>
+<script type="text/javascript" language="javascript">
+
+//document.getElementById("but1").onclick=test;
+document.getElementById("but1").attachEvent("onclick",test); //ie浏览器支持这种用法
+
+
+(4)判断输入的是不是一个数
+<script type="text/javascript" language="javascript">
+function test() {
+	//用户每按下一个键，就去判断是不是一个数
+	if(event.keyCode<48||event.keyCode>57)
+		{
+		window.alert("你输入的不是一个数")
+	   return false;
+		}
+	
+}
+
+
+</script>
+</head>
+<body>
+<input type="text" onkeypress="return test()" id="text1">
+<input type="button" value="提交">;
+
+
+
+
+
+
+
+
+<>document对象
+定义：
+
+ document对象代表整个html文档，因此可以访问到文档中的各个对象（元素）
+ 
+ (1) write
+ 这个是向文档输出文本或者是js的代码
+ (2)writeln
+ 这个是向文档输出文本或是js代码，与write不一样的地方是，writeln是换行输出
+ 
+ 
+ 比如： document.writeln("ok");
+         document.writeln("hello");
+         
+         输出 hello
+         ok
+         
+         但是对于浏览器来说，没有区别这两个函数
+         
+         
+         
+         
+         （3）getelementsById()
+         
+   1.       id选择器不能以数字开头，如果多个id选择器id相同，
+         就执行排在第一个的id的value
+         
+         2.规定html文档中id要唯一，如果不唯一，则只取第一个元素
+         
+         3.id不用数字开头
+         
+         4.id不能唯一，但是name可以重复 再利用复选框的时候
+  
+  (4)       getElementsByName //按名字返回
+  
+  
+  	//id不能唯一，但name可以重复
+	var hobby=document.getElementsByName("hobby");
+	for(var i=0; i<hobby.length;i++)
+		{
+		//如何判断是否选择
+		if(hobby[i].checked)
+			{
+		window.alert("你的爱好是"+hobby[i].value)
+			}
+		}
+		
+		
+		（5）getElementByTagName
+		function test3() {
+	//通过标签名来获取元素
+	var myobj=document.getElementsByTagName("input");
+	for(var i=0;i<myobj.length;i++)
+		{
+		window.alert(myobj[i].value);
+		}
+}
+         
+         (6)document可以动态的创建元素
+         如何动态创建html元素
+         var mybutton=document.createElement("input");
+	mybutton.type="button";
+	mybutton.value="按钮";
+	document.getElementById("div1").appendChild(mybutton);
+	mybutton.id="bu1";
+}
+
+function test2() {
+	//两种删除方式
+	//document.getElementById("div1").removeChild(document.getElementById("bu1"));
+	//也可以寻找父节点
+	var par=document.getElementById("bu1").parentNode; 
+	par.removeChild(document.getElementById("bu1"));
+}
+         <>dom编程加强
+         
+         //获得乌龟的div
+	var wuguidiv=document.getElementById("wugui");
+	//window.alert(wuguidiv.nodeName);
+	//window.alert(wuguidiv.nodeValue);
+	//window.alert(wuguidiv.nodeType);
+	window.alert(wuguidiv.childNodes.length); //子节点
+	window.alert(wuguidiv.nextSibling.nodeName); //后一个节点
+	window.alert(wuguidiv.parentNode.nodeName); //父节点
+	window.alert(wuguidiv.previousSibling.nodeName); //前一个节点
+}
+
+
+
+<>body对象说明
+
+innerText和innerHTML区别
+	//document.getElementById("myspan").innerText="<a href='www.sohu.com'>go to sohu</a>";
+	//输出的是上面的字符串
+	document.getElementById("myspan").innerHTML="<a href='www.sohu.com'>go to sohu</a>";
+	//输出超链接
+         
+         
+         
+         
+ <>dom加强
+ 
+坦克转向
+（1）做4个图片
+
+更换src
+
+（2）一次加载一个背景图。然后显示不同部分
+
+
+function change(obj) {
+	var tank=document.getElementById("tank");
+	if(obj.value=="上")
+		{
+		tank.style.backgroundPositionY="0px";
+		}
+	if(obj.value=="右")
+	{
+	tank.style.backgroundPositionY="120px";
+	}
+	if(obj.value=="下")
+	{
+	tank.style.backgroundPositionY="80px";
+	}
+	if(obj.value=="左")
+	{
+	tank.style.backgroundPositionY="40px";
+	}
+}
+
+
+
+</script>
+</head>
+<body>
+<div id="tank" style="background-position-y:40px; background-image: url('itank.gif'); width: 40px;height: 40px;"></div>
+<input type="button" value="上" onclick="change(this)">
+<input type="button" value="右" onclick="change(this)">
+<input type="button" value="下" onclick="change(this)">
+<input type="button" value="左" onclick="change(this)">
+ 
+ 
+ 
+ 
+ style对象的相关案例
+ var fruits=document.getElementsByName("fruit");
+function gouwu(obj) {
+	//遍历所有的checkbox，计算总价
+
+	var allprice=0;
+	for(var i=0;i<fruits.length;i++)
+		{
+		if(fruits[i].checked)
+			{
+			allprice+=parseFloat(fruits[i].value);
+			}
+		
+		}
+	myspan.innerText=allprice+"元";
+	
+	
+}
+
+function selectcheck(obj) {
+	if(obj.value=="1")
+		{
+		for(var i=0;i<fruits.length;i++)
+			{
+			fruits[i].checked=true;
+			}
+		}
+	if(obj.value=="2")
+	{
+	for(var i=0;i<fruits.length;i++)
+		{
+		fruits[i].checked=false;
+		}
+	}
+	gouwu(obj);
+	
+}
+
+</script>
+</head>
+<body>
+<h1>我的购物车</h1>
+<input type="checkbox" name="fruit" onclick="gouwu(this)" value="10">苹果10元</br>
+<input type="checkbox" name="fruit" onclick="gouwu(this)" value="20">香蕉20元</br>
+<input type="checkbox" name="fruit" onclick="gouwu(this)" value="30">西瓜30元</br>
+<input type="checkbox" name="fruit" onclick="gouwu(this)" value="40">瓜子40元</br>
+<input type="checkbox" name="fruit" onclick="gouwu(this)" value="50">葡萄50元</br>
+总价格是：<span id="myspan">0元</span></br>
+
+<input type="radio" onclick="selectcheck(this)" name="select" value="1">全选
+<input type="radio" onclick="selectcheck(this)" name="select" value="2">取消
+
+
+</body>
+
+
+
+<>form对象集合
+
+length：返回大小
+
+item（index）：指定取出form对象集合的第几个form表单
+
+说明：当访问表单的某个元素的时候，可以
+
+（1）document.forms[第几个表单].元素名
+
+（2）document.forms.item[第几个表单].元素名
+
+ (3)直接利用id
+ 
+ 
+ 
+ 
+ 
+ <>table 对象详解
+ 
+ //取出所有行
+function test1() {
+	/*
+	var myrow=mytable.rows;
+	window.alert(myrow.length);
+	window.alert(myrow[1].cells[2].innerText);
+*/
+for(var i=0;i<mytable.rows.length;i++)
+	{
+	//取出一行
+	var eachrow=mytable.rows[i];
+	//对该行遍历
+	for(var j=0;j<eachrow.cells.length;j++)
+		{
+		//取出数据
+		window.alert(eachrow.cells[j].innerText);
+		}
+	}
+
+}
+
+function test2() {
+mytable.deleteRow(1);	
+}
+
+//插入一行
+function test3() {
+	var tablerow=mytable.insertRow(1);
+	tablerow.insertCell(0).innerText="3";
+	tablerow.insertCell(1).innerText="吴用";
+	tablerow.insertCell(2).innerText="智多星";
+}
+
+
+
+
+<>正则表达式
+
+1.强大的字符串匹配功能
+
+2.不仅适用在js中，在其他编程语言如java等也适用
+
+3.构建正则表达式的两种方法
+
+（1）隐式构建
+
+var res=/正则表达式/gi
+
+（2）动态创建
+
+var res =new ResExp("正则表达式","gi");
+
+（3）主要有以下几种标志符
+1.g  查找全局匹配
+
+2.i 执行区分大小写的匹配
+
+3.m 执行多行匹配
+
+/*  test函数
+	var con=context.innerText;
+	var Reg=/abc/gi;
+	if(Reg.test(con))
+		{
+		window.alert("ok");
+		}
+	else
+		{
+		window.alert("no ok");
+		}*/
+		
+		
+		/* search函数
+	var str="Visit W3School!"
+		document.write(str.search(/W3School/))
+//search区分大小写  但是不是全局匹配
+*/
+
+}
+
+function test2() {
+	/*
+	//match方法
+	var con=context.innerText;
+	var Reg=/abc/gi;
+	res=con.match(Reg);
+	for(var i=0;i<res.length;i++)
+		{
+		document.write(res[i]);
+		}
+	*/
+	//replace函数
+	var con=context.innerText;
+	var Reg=/(\d){4}/gi;
+  // var newocn=con.replace("/(\\d){4}/","这里原来是4个数");
+ var newcon=con.replace(Reg,"这里原来是4个数");
+ context.innerText=newcon;
+  
+}
+
+function test4() {
+	var con=context.innerText;
+	var Reg=/(\d){4}/gi;
+	while(res=Reg.exec(con))
+		{
+		window.alert("index="+RegExp.index); //找下标  //静态变量直接通过对象查找
+		}
+}
+
+function test5() {
+	//找出4个连续数字，第一个和第4个数字相同，第二个和第三个相同
+	var con=context.innerText;
+	var Reg=/(\d)(\d)\2\1/gi;
+	//解释  每一个括号表示一个子表达式      \2表示反向引用第二个子表达式内容出现在了第三个位置  
+	// \1表示反向引用第二个子表达式内容出现在了第四个位置
+	while(res=Reg.exec(con))
+		{
+		document.write(res);
+		}
+	//输出aabbccdd
+	// 正则表达式  var Reg=/(\d)\1(\d)\2(\d)\3/gi
+	
+	//匹配5个连续数
+	// 正则表达式  var Reg=/(\d)\1{4}/gi
+	
+	//匹配一个号码  前面5个数 然后-  后面9个数连续3位相同
+	
+	// 正则表达式  var Reg=/(\d){5}-(\d)\2\2(\d)\3\3(\d)\4\4/gi
+	
+	
+	
+	
+	<>元字符
+ 

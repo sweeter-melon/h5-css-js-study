@@ -1,0 +1,46 @@
+@CHARSET "UTF-8";
+body{
+	margin:0px;
+	padding: 0px;
+	width: 500px;
+	height:370px;
+	border: 1px solid blue;
+}
+/* 用于控制显示位置
+.div1{
+	width: 500px;
+	height:300px;
+	border: 1px solid blue;
+}
+*/
+/* faceul用于控制显示图片区域的宽度和高度*/
+.ful{
+	width: 180px;
+	height:320px;
+	border: 1px solid red;
+	list-style-type: none;
+	padding: 0;
+	margin-left:150px;
+}
+/*用于控制单个图片区域的大小*/
+.ful li{
+	
+	width: 50px;
+	height:65px;
+	border:1px solid blue;
+	float:left;/*左浮动*/
+	margin-left:5px;
+	margin-top:5px;
+}
+
+.ful a{
+	font-size: 12px;
+	margin-left:17px;
+    
+}
+.ful img{
+	
+	width:40px;
+	margin-top:5px;
+	margin-left:5px;
+}
